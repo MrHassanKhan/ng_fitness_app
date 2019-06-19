@@ -20,6 +20,7 @@
           <!-- <mat-error *ngIf="birthdate.hasError('required')">Field must not be empty</mat-error> -->
       </mat-form-field>
       <mat-checkbox ngModel name="agree" required color="primary">Agree to Terms and Conditions</mat-checkbox>
-      <button type="submit" [disabled]="!f.valid" mat-raised-button color="primary" >Submit</button>
+      <button *ngIf="!(isLoading$ | async)" type="submit" [disabled]="!f.valid" mat-raised-button color="primary" >Submit</button>
+      <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
   </form>
 </section>
